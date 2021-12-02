@@ -1,4 +1,4 @@
-package com.moringaschool.myrestaurants;
+package com.moringaschool.myrestaurants.network;
 
 import static com.moringaschool.myrestaurants.Constants.YELP_API_KEY;
 import static com.moringaschool.myrestaurants.Constants.YELP_BASE_URL;

@@ -1,16 +1,10 @@
 
-package com.moringaschool.myrestaurants;
+package com.moringaschool.myrestaurants.models;
 
-import javax.annotation.Generated;
-import android.os.Parcelable;
-import android.os.Parcelable.Creator;
-import android.os.Parcelable.Creator;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-@Generated("jsonschema2pojo")
-public class Location implements Parcelable
-{
+public class Location {
 
     @SerializedName("city")
     @Expose
@@ -33,42 +27,16 @@ public class Location implements Parcelable
     @SerializedName("zip_code")
     @Expose
     private String zipCode;
-    public final static Creator<Location> CREATOR = new Creator<Location>() {
-
-
-        @SuppressWarnings({
-            "unchecked"
-        })
-        public Location createFromParcel(android.os.Parcel in) {
-            return new Location(in);
-        }
-
-        public Location[] newArray(int size) {
-            return (new Location[size]);
-        }
-
-    }
-    ;
-
-    protected Location(android.os.Parcel in) {
-        this.city = ((String) in.readValue((String.class.getClassLoader())));
-        this.country = ((String) in.readValue((String.class.getClassLoader())));
-        this.address2 = ((String) in.readValue((String.class.getClassLoader())));
-        this.address3 = ((String) in.readValue((String.class.getClassLoader())));
-        this.state = ((String) in.readValue((String.class.getClassLoader())));
-        this.address1 = ((String) in.readValue((String.class.getClassLoader())));
-        this.zipCode = ((String) in.readValue((String.class.getClassLoader())));
-    }
 
     /**
      * No args constructor for use in serialization
-     * 
+     *
      */
     public Location() {
     }
 
     /**
-     * 
+     *
      * @param country
      * @param zipCode
      * @param address3
@@ -142,20 +110,6 @@ public class Location implements Parcelable
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
-    }
-
-    public void writeToParcel(android.os.Parcel dest, int flags) {
-        dest.writeValue(city);
-        dest.writeValue(country);
-        dest.writeValue(address2);
-        dest.writeValue(address3);
-        dest.writeValue(state);
-        dest.writeValue(address1);
-        dest.writeValue(zipCode);
-    }
-
-    public int describeContents() {
-        return  0;
     }
 
 }

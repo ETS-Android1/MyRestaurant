@@ -2,15 +2,15 @@ package com.moringaschool.myrestaurants;
 
 import static junit.framework.TestCase.assertTrue;
 
-import android.content.Intent;
 import android.widget.TextView;
+
+import com.moringaschool.myrestaurants.ui.MainActivity;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.shadows.ShadowActivity;
 
 @RunWith(RobolectricTestRunner.class)
 
