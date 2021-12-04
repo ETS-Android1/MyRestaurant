@@ -3,8 +3,10 @@ package com.moringaschool.myrestaurants.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import org.parceler.Parcel;
 
+import java.util.List;
+@Parcel
 public class Business {
 
     @SerializedName("rating")
@@ -78,7 +80,9 @@ public class Business {
      * @param id
      * @param categories
      */
-    public Business(Double rating, String price, String phone, String id, String alias, Boolean isClosed, List<Category> categories, Integer reviewCount, String name, String url, Coordinates coordinates, String imageUrl, Location location, Double distance, List<String> transactions) {
+    public Business(Double rating, String price, String phone, String id, String alias, Boolean isClosed, List<Category> categories,
+                    Integer reviewCount, String name, String url, Coordinates coordinates,
+                    String imageUrl, Location location, Double distance, List<String> transactions) {
         super();
         this.rating = rating;
         this.price = price;

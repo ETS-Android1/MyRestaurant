@@ -4,8 +4,10 @@ package com.moringaschool.myrestaurants.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import org.parceler.Parcel;
 
+import java.util.List;
+@Parcel
 public class YelpBusinessesSearchResponse {
 
     @SerializedName("total")
