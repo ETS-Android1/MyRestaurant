@@ -8,10 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moringaschool.myrestaurants.Constants;
 import com.moringaschool.myrestaurants.R;
 import com.moringaschool.myrestaurants.models.Business;
 import com.moringaschool.myrestaurants.models.Category;
@@ -46,11 +50,10 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
     public RestaurantDetailFragment() {
         // Required empty public constructor
     }
-
-
     public static RestaurantDetailFragment newInstance(Business restaurant) {
         RestaurantDetailFragment restaurantDetailFragment = new RestaurantDetailFragment();
         Bundle args = new Bundle();
+
         args.putParcelable("restaurant", Parcels.wrap(restaurant));
         restaurantDetailFragment.setArguments(args);
         return restaurantDetailFragment;
@@ -70,7 +73,9 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
 
         View view =  inflater.inflate(R.layout.fragment_restaurant_detail, container, false);
         ButterKnife.bind(this, view);
-        Picasso.get().load(mRestaurant.getImageUrl()).into(mImageLabel);
+        Picasso.get()
+                .load(mRestaurant.getImageUrl())
+                .into(mImageLabel);
 
         List<String> categories = new ArrayList<>();
 
@@ -87,6 +92,7 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
         mWebsiteLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
         mAddressLabel.setOnClickListener(this);
+        mSaveRestaurantButton.setOnClickListener(this);
 
         return view;
     }
@@ -106,6 +112,14 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
                     + "," + mRestaurant.getCoordinates().getLongitude()
                     + "?q=(" + mRestaurant.getName() + ")"));
             startActivity(mapIntent);
+        }
+        if(v ==mSaveRestaurantButton){
+            DatabaseReference restaurantRef= FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
+            restaurantRef.push().setValue(mRestaurant);
+            Toast.makeText(getContext(),"Saved",Toast.LENGTH_SHORT).show();
+
         }
     }
 }
